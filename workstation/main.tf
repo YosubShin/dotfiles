@@ -21,6 +21,7 @@ resource "digitalocean_volume" "dev" {
 }
 
 resource "digitalocean_droplet" "dev" {
+  count              = 0
   name               = "dev"
   image              = "ubuntu-19-04-x64"
   size               = "s-1vcpu-2gb"
@@ -61,7 +62,7 @@ resource "digitalocean_droplet" "dev" {
 resource "digitalocean_firewall" "dev" {
   name = "dev"
 
-  droplet_ids = ["${digitalocean_droplet.dev.id}"]
+  droplet_ids = ["${digitalocean_droplet.dev.*.id}"]
 
   inbound_rule = [
     {
@@ -95,5 +96,5 @@ resource "digitalocean_firewall" "dev" {
 }
 
 output "public_ip" {
-  value = "${digitalocean_droplet.dev.ipv4_address}"
+  value = "${digitalocean_droplet.dev.*.ipv4_address}"
 }
