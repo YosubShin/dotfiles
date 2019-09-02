@@ -111,14 +111,6 @@ if ! [ -x "$(command -v go)" ]; then
   export PATH="/usr/local/go/bin:$PATH"
 fi
 
-# install 1password
-if ! [ -x "$(command -v op)" ]; then
-  export OP_VERSION="v0.5.6-003"
-  curl -sS -o 1password.zip https://cache.agilebits.com/dist/1P/op/pkg/${OP_VERSION}/op_linux_amd64_${OP_VERSION}.zip
-  unzip 1password.zip op -d /usr/local/bin
-  rm -f 1password.zip
-fi
-
 # install kubectl
 if ! [ -x "$(command -v kubectl)" ]; then
   curl -L -o /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
@@ -323,40 +315,6 @@ if [ ! -d /mnt/dev/code/dotfiles ]; then
   ln -sfn $(pwd)/agignore "${HOME}/.agignore"
   ln -sfn $(pwd)/sshconfig "${HOME}/.ssh/config"
 fi
-
-
-if [ ! -f "/mnt/dev/secrets/pull-secrets.sh" ]; then
-  echo "==> Creating pull-secret.sh script"
-
-cat > pull-secrets.sh <<'EOF'
-#!/bin/bash
-
-set -eu
-
-echo "Authenticating with 1Password"
-export OP_SESSION_my=$(op signin https://my.1password.com ftharsln@gmail.com --output=raw)
-
-echo "Pulling secrets"
-
-op get document 'github_rsa' > github_rsa
-op get document 'zsh_private' > zsh_private
-op get document 'zsh_history' > zsh_history
-
-rm -f ~/.ssh/github_rsa
-ln -sfn $(pwd)/github_rsa ~/.ssh/github_rsa
-chmod 0600 ~/.ssh/github_rsa
-
-ln -sfn $(pwd)/zsh_private ~/.zsh_private
-ln -sfn $(pwd)/zsh_history ~/.zsh_history
-
-echo "Done!"
-EOF
-
-  mkdir -p /mnt/dev/secrets
-  chmod +x pull-secrets.sh
-  mv pull-secrets.sh /mnt/dev/secrets
-fi
-
 
 # Set correct timezone
 timedatectl set-timezone America/Los_Angeles

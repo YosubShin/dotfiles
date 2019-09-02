@@ -17,7 +17,6 @@ $ terraform apply -auto-approve
 
 ```
 $ mosh --no-init --ssh="ssh -o StrictHostKeyChecking=no -i ~/.ssh/github_rsa -p 22" root@<DROPLET_IP> -- tmux new-session -ADs main
-$ cd /mnt/dev/secrets && ./pull-secrets.sh
 ```
 
 ## Todo
