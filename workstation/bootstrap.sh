@@ -145,6 +145,13 @@ if ! [ -x "$(command -v protoc)" ]; then
   rm -rf protobuf_install
 fi
 
+# install awscli
+if ! [ -x "$(command -v aws)" ]; then
+  pip3 install awscli --upgrade --user
+  export PATH="${HOME}/.local/bin:$PATH"
+  # aws configure
+fi
+
 # install tools
 if ! [ -x "$(command -v jump)" ]; then
   echo " ==> Installing jump .."
