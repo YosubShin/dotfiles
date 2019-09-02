@@ -73,7 +73,6 @@ sudo apt-get install -qq \
   python3-setuptools \
   python3-venv \
   python3-wheel \
-  qemu-kvm \
   qrencode \
   quilt \
   ripgrep \
