@@ -11,7 +11,7 @@ variable "region" {
 resource "digitalocean_volume" "dev" {
   name                    = "dev"
   region                  = "${var.region}"
-  size                    = 100
+  size                    = 10
   initial_filesystem_type = "ext4"
   description             = "volume for dev"
 
@@ -23,7 +23,7 @@ resource "digitalocean_volume" "dev" {
 resource "digitalocean_droplet" "dev" {
   name               = "dev"
   image              = "ubuntu-19-04-x64"
-  size               = "s-4vcpu-8gb"
+  size               = "s-1vcpu-2gb"
   region             = "${var.region}"
   private_networking = true
   backups            = true
