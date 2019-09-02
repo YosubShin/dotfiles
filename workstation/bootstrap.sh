@@ -267,7 +267,6 @@ if [ ! -d /mnt/dev/code/dotfiles ]; then
   git remote set-url origin git@github.com:fatih/dotfiles.git
 
   ln -sfn $(pwd)/zshrc "${HOME}/.zshrc"
-  ln -sfn $(pwd)/tmuxconf "${HOME}/.tmux.conf"
   ln -sfn $(pwd)/gitconfig "${HOME}/.gitconfig"
   ln -sfn $(pwd)/agignore "${HOME}/.agignore"
   ln -sfn $(pwd)/sshconfig "${HOME}/.ssh/config"
