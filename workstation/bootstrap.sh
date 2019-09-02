@@ -86,7 +86,6 @@ sudo apt-get install -qq \
   sqlite3 \
   stow \
   sudo \
-  tig \
   tmate \
   tmux \
   tree \
@@ -269,7 +268,6 @@ if [ ! -d /mnt/dev/code/dotfiles ]; then
 
   ln -sfn $(pwd)/zshrc "${HOME}/.zshrc"
   ln -sfn $(pwd)/tmuxconf "${HOME}/.tmux.conf"
-  ln -sfn $(pwd)/tigrc "${HOME}/.tigrc"
   ln -sfn $(pwd)/git-prompt.sh "${HOME}/.git-prompt.sh"
   ln -sfn $(pwd)/gitconfig "${HOME}/.gitconfig"
   ln -sfn $(pwd)/agignore "${HOME}/.agignore"
