@@ -28,7 +28,7 @@ resource "digitalocean_droplet" "dev" {
   private_networking = true
   backups            = true
   ipv6               = true
-  ssh_keys           = [23737229]                        # doctl compute ssh-key list
+  ssh_keys           = [25295573]                        # doctl compute ssh-key list
   volume_ids         = ["${digitalocean_volume.dev.id}"]
 
   provisioner "file" {
