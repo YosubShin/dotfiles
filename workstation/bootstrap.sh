@@ -19,6 +19,12 @@ if [ "${UPGRADE_PACKAGES}" != "none" ]; then
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
   fi
 
+  YARN_SOURCE="/etc/apt/sources.list.d/yarn.list"
+  if [ ! -f "${YARN_SOURCE}" ]; then
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee -a ${YARN_SOURCE}
+    curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+  fi
+
   sudo apt-get update
   sudo apt-get upgrade -y
 fi
@@ -92,6 +98,7 @@ sudo apt-get install -qq \
   zlib1g-dev \
   zsh \
   emacs \
+  yarn \
   --no-install-recommends \
 
 rm -rf /var/lib/apt/lists/*
