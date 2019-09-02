@@ -5,7 +5,7 @@ terraform {
 provider "digitalocean" {}
 
 variable "region" {
-  default = "fra1"
+  default = "sfo2"
 }
 
 resource "digitalocean_volume" "dev" {
