@@ -1,3 +1,7 @@
+terraform {
+  required_version = "~> 0.11"
+}
+
 provider "digitalocean" {}
 
 variable "region" {
