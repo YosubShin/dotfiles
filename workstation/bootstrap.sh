@@ -107,12 +107,6 @@ if ! [ -x "$(command -v go)" ]; then
   export PATH="/usr/local/go/bin:$PATH"
 fi
 
-# install kubectl
-if ! [ -x "$(command -v kubectl)" ]; then
-  curl -L -o /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-  chmod 755 /usr/local/bin/kubectl
-fi
-
 # install doctl
 if ! [ -x "$(command -v doctl)" ]; then
   export DOCTL_VERSION="1.20.1"
