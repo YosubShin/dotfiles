@@ -11,7 +11,6 @@ if [ "${UPGRADE_PACKAGES}" != "none" ]; then
 
   # Add third party repositories
   sudo add-apt-repository ppa:keithw/mosh-dev -y
-  sudo add-apt-repository ppa:jonathonf/vim -y
 
   CLOUD_SDK_SOURCE="/etc/apt/sources.list.d/google-cloud-sdk.list"
   CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
@@ -96,7 +95,6 @@ sudo apt-get install -qq \
   zgen \
   zip \
   zlib1g-dev \
-  vim-gtk3 \
   zsh \
   --no-install-recommends \
 
@@ -175,43 +173,6 @@ if ! [ -x "$(command -v hub)" ]; then
   cp hub-linux-amd64-${HUB_VERSION}/bin/hub /usr/local/bin
   rm -rf hub-linux-amd64-${HUB_VERSION}
   rm -f hub-linux-amd64-${HUB_VERSION}.tgz*
-fi
-
-VIM_PLUG_FILE="${HOME}/.vim/autoload/plug.vim"
-if [ ! -f "${VIM_PLUG_FILE}" ]; then
-  echo " ==> Installing vim plugins"
-  curl -fLo ${VIM_PLUG_FILE} --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-  mkdir -p "${HOME}/.vim/plugged"
-  pushd "${HOME}/.vim/plugged"
-  git clone "https://github.com/AndrewRadev/splitjoin.vim"
-  git clone "https://github.com/ConradIrwin/vim-bracketed-paste"
-  git clone "https://github.com/Raimondi/delimitMate"
-  git clone "https://github.com/SirVer/ultisnips"
-  git clone "https://github.com/cespare/vim-toml"
-  git clone "https://github.com/corylanou/vim-present"
-  git clone "https://github.com/ekalinin/Dockerfile.vim"
-  git clone "https://github.com/elzr/vim-json"
-  git clone "https://github.com/fatih/vim-hclfmt"
-  git clone "https://github.com/fatih/vim-nginx"
-  git clone "https://github.com/fatih/vim-go"
-  git clone "https://github.com/hashivim/vim-hashicorp-tools"
-  git clone "https://github.com/junegunn/fzf.vim"
-  git clone "https://github.com/mileszs/ack.vim"
-  git clone "https://github.com/roxma/vim-tmux-clipboard"
-  git clone "https://github.com/plasticboy/vim-markdown"
-  git clone "https://github.com/scrooloose/nerdtree"
-  git clone "https://github.com/t9md/vim-choosewin"
-  git clone "https://github.com/tmux-plugins/vim-tmux"
-  git clone "https://github.com/tmux-plugins/vim-tmux-focus-events"
-  git clone "https://github.com/fatih/molokai"
-  git clone "https://github.com/tpope/vim-commentary"
-  git clone "https://github.com/tpope/vim-eunuch"
-  git clone "https://github.com/tpope/vim-fugitive"
-  git clone "https://github.com/tpope/vim-repeat"
-  git clone "https://github.com/tpope/vim-scriptease"
-  git clone "https://github.com/ervandew/supertab"
-  popd
 fi
 
 if [ ! -d "$(go env GOPATH)" ]; then
@@ -306,7 +267,6 @@ if [ ! -d /mnt/dev/code/dotfiles ]; then
   cd "/mnt/dev/code/dotfiles"
   git remote set-url origin git@github.com:fatih/dotfiles.git
 
-  ln -sfn $(pwd)/vimrc "${HOME}/.vimrc"
   ln -sfn $(pwd)/zshrc "${HOME}/.zshrc"
   ln -sfn $(pwd)/tmuxconf "${HOME}/.tmux.conf"
   ln -sfn $(pwd)/tigrc "${HOME}/.tigrc"
