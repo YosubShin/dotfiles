@@ -91,6 +91,7 @@ sudo apt-get install -qq \
   zip \
   zlib1g-dev \
   zsh \
+  emacs \
   --no-install-recommends \
 
 rm -rf /var/lib/apt/lists/*
