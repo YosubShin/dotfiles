@@ -41,8 +41,6 @@ sudo apt-get install -qq \
   git-crypt \
   gnupg \
   gnupg2 \
-  google-cloud-sdk \
-  google-cloud-sdk-app-engine-go \
   htop \
   hugo \
   ipcalc \
@@ -138,13 +136,6 @@ if ! [ -x "$(command -v protoc)" ]; then
   mv include/* /usr/local/include/
   popd
   rm -rf protobuf_install
-fi
-
-# install cloud_sql_proxy
-if ! [ -x "$(command -v cloud_sql_proxy)" ]; then
-  wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy
-  chmod +x cloud_sql_proxy 
-  mv cloud_sql_proxy /usr/local/bin
 fi
 
 # install tools
