@@ -80,7 +80,6 @@ sudo apt-get install -qq \
   quilt \
   ripgrep \
   shellcheck \
-  silversearcher-ag \
   socat \
   software-properties-common \
   sqlite3 \
@@ -268,7 +267,6 @@ if [ ! -d /mnt/dev/code/dotfiles ]; then
 
   ln -sfn $(pwd)/zshrc "${HOME}/.zshrc"
   ln -sfn $(pwd)/gitconfig "${HOME}/.gitconfig"
-  ln -sfn $(pwd)/agignore "${HOME}/.agignore"
   ln -sfn $(pwd)/sshconfig "${HOME}/.ssh/config"
 fi
 
